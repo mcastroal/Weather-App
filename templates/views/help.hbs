@@ -7,9 +7,36 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+    {{>header}}
     <div class="main-content">
-        {{>header}}
-        <P>{{helpText}}</P>
+        
+        <h1 class="main-title">Help</h1>
+        <div class="weather-card">
+            <p>
+            Use this page to learn how to search for weather information and
+            troubleshoot common issues.
+            </p>
+            <h2>How to Use the App</h2>
+            <ul>
+                <li>Enter a city or location in the search box</li>
+                <li>Select your preferred temperature unit</li>
+                <li>Click “Search” to view the weather</li>
+            </ul>
+            <h2>Common Issues</h2>
+            <ul>
+                <li>
+                    <strong>Invalid location provided:</strong> "Unable to find location. Try another search." Make sure the search field has a valid address, no special characters.
+                </li>
+                <li>
+                    <strong>Service unavailable:</strong> "Unable to connect to location services!" This may be a temporary connectivity issue. Try again later.
+                </li>
+            </ul>  
+            <h2>Temperature Units</h2>
+            <p>
+                You can choose between Fahrenheit (°F) and Celsius (°C) using the
+                dropdown next to the search field.
+            </p>
+        </div>
     </div>
     
     {{>footer}}

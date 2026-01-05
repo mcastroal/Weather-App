@@ -28,7 +28,7 @@ app.get('', (req, res) => {
 
 app.get('/about', (req, res) => {
     res.render('about', {
-        title: 'About Me',
+        title: 'Weather App',
         name: 'Marilyn Castro'
     })
 })
@@ -36,24 +36,27 @@ app.get('/about', (req, res) => {
 app.get('/help', (req, res) => {
     res.render('help', {
         helpText: 'This is some helpful text',
-        title: 'Help',
+        title: 'Weather App',
         name: 'Marilyn Castro'
     })
 })
 
 app.get('/weather', (req, res) => {
-    if (!req.query.address) {
+    const address = req.query.address
+    const units = req.query.units || 'f'
+
+    if (!address) {
         return res.send({
             error: 'You must provide an address!'
         })
     }
 
-    geocode(req.query.address, (error, { longitude, latitude, location} = {}) => {
+    geocode(address, (error, { longitude, latitude, location} = {}) => {
         if (error) {
             return res.send({ error })
         }
 
-        forecast(longitude, latitude, (error, forecastData) => {
+        forecast(longitude, latitude, units, (error, forecastData) => {
             if (error) {
                 return res.send({ error })
             }
@@ -61,7 +64,7 @@ app.get('/weather', (req, res) => {
             res.send({
                 forecast: forecastData,
                 location,
-                address: req.query.address
+                address
             })
         })
     })

@@ -7,15 +7,24 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+    {{>header}}
     <div class="main-content">
-        {{>header}}
+        
+        <h1 class="main-title">Know Before You Go</h1>
+        <div class="weather-card">
+            <form id="weather-form" class="weather-form">
+                <input id="location-input" type="text" placeholder="Enter a city or location" required>
 
-        <form>
-            <input placeholder="Location">
-            <button>
+                <select id="units">
+                    <option value="f">°F (Fahrenheit)</option>
+                    <option value="m">°C (Celsius)</option>
+                </select>
+
+                <button>
                 Search
-            </button>
-        </form>
+                </button>
+            </form>
+        </div>
 
         <p id="message-1"></p>
         <p id="message-2"></p>
